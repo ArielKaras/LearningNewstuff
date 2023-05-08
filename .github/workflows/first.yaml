@@ -1,20 +1,14 @@
-name: let's try one more time
-on: push
 
+name: first workflow
+on: push
 jobs:
-  job1:
-    name: First job
-    runs-on: ubuntu-latest
-    steps:
-      name: step one
-      uses: action/checkout@v2
-      -name: Step two
-      run: env | sort
-  job2:
-    name: First job
-    runs-on: Windows-latest
-    steps:
-      name: step one
-      uses: action/checkout@v2
-      -name: Step two
-      run: "Get-ChildItem ENV: | Sort-Object Name"
+    build:
+      runs-on: windows-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
