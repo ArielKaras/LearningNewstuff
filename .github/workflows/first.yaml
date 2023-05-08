@@ -1,7 +1,6 @@
 name: first workflow
 on: push
 jobs:
-  job1:
     build:
       runs-on: windows-latest
       steps:
