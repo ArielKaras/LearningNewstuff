@@ -1,21 +1,20 @@
-
 name: first workflow
 on: push
 jobs:
-    Job-One:
-      name: First job
-      runs-on: ubuntu-latest
-      steps:
-      - name: Step One
-      - uses: actions/checkout@v2
-      - name: Step Two
-        run: env | sort
+  Job-One:
+    name: First job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Step One
+      uses: actions/checkout@v2
+    - name: Step Two
+      run: env | sort
 
-    Job-Two:
-      name: Second job
-      runs-on: windows-latest
-      steps:
-      - name: Step One
-      - uses: actions/checkout@v2
-      - name: Step Two
-        run: "Get-ChildItem Env: | Sort-Object Name"
+  Job-Two:
+    name: Second job
+    runs-on: windows-latest
+    steps:
+    - name: Step One
+      uses: actions/checkout@v2
+    - name: Step Two
+      run: "Get-ChildItem Env: | Sort-Object Name"
