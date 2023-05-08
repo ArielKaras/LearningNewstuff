@@ -10,5 +10,3 @@ jobs:
       - name: step one
         uses: actions/checkout@v2
         run: echo "Hello World"
-      - name: step two
-        run: env | sort
