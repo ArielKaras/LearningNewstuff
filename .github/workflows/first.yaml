@@ -30,4 +30,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Step Two
-      run: "Thank you for using this workflow"
+      run: "echo Thank you for using this workflow"
