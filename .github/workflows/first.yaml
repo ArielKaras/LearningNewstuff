@@ -1,17 +1,17 @@
-name: Develop workflow with artifacts
-on: push
+name: artifacts
+on: [push]
 
 env:
-  NAME_OF_THE_ARTIFACT: my-artifact
+  ARTIFACT_NAME: my-artifact
 
 jobs:
-  One job two steps:
+  main:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkingout code"
+      - name: "Checkout code"
       - uses: actions/checkout@v2
-      - name: "Creating artifact"
+      - name: "upload-artifact"
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.NAME_OF_THE_ARTIFACT }}
-          path: .\my-artifact
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .
