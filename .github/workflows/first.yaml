@@ -1,5 +1,9 @@
 name: first workflow
-on: push
+on:
+    push:
+        branches: [ master ]
+    Pull_trigger:
+        branches: [ master ]
 jobs:
   Job-One:
     name: First job
@@ -8,7 +12,7 @@ jobs:
     - name: Step One
       uses: actions/checkout@v2
     - name: Step Two
-      run: env | sort
+      run: date "+%Y/%m/%d %H:%M:%S"
 
   Job-Two:
     name: Second job
@@ -17,4 +21,23 @@ jobs:
     - name: Step One
       uses: actions/checkout@v2
     - name: Step Two
-      run: "Get-ChildItem Env: | Sort-Object Name"
+      run: "echo %date:~-4%/%date:~3,2%/%date:~0,2% %time:~0,2%:%time:~3,2%:%time:~6,2%"
+
+  Job-three:
+    name: third job
+    runs-on: MacOS-latest
+    steps:
+    - name: Step One
+      uses: actions/checkout@v2
+    - name: Step Two
+      run: date "+%Y/%m/%d %H:%M:%S"
+
+  Job-four:
+    needs: [Job-One, Job-Two, Job-three]
+    name: fourth job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Step One
+      uses: actions/checkout@v2
+    - name: Step Two
+      run: "echo Thank you for using this workflow"
