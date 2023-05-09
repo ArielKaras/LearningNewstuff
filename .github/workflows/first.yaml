@@ -1,4 +1,4 @@
-Name: Python Pipeline
+name: Python Pipeline
 
 on: push
 
