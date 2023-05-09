@@ -1,33 +1,17 @@
-name: first workflow
+name: Develop workflow with artifacts
+on: push
 
-on: [push]
+env:
+  NAME_OF_THE_ARTIFACT: my-artifact
 
 jobs:
-  Job-One-ubuntu:
-    name: First job
+  One job two steps:
     runs-on: ubuntu-latest
     steps:
-    - name: Printing date and time
-      run: date
-
-  Job-Two-windows:
-    name: Second job
-    runs-on: windows-latest
-    steps:
-    - name: Printing date and time
-      run: date
-
-  Job-three-macos:
-    name: third job
-    runs-on: MacOS-latest
-    steps:
-    - name: Printing date and time
-      run: date
-
-  Job-four:
-    needs: [Job-One-ubuntu, Job-Two-windows, Job-three-macos]
-    name: fourth job
-    runs-on: ubuntu-latest
-    steps:
-    - name: Step Two
-      run: "echo Thank you for using this workflow"
+      - name: "Checkingout code"
+      - uses: actions/checkout@v2
+      - name: "Creating artifact"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.NAME_OF_THE_ARTIFACT }}
+          path: .\my-artifact
