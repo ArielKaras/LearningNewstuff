@@ -2,8 +2,6 @@ name: first workflow
 on:
     push:
         branches: [ master ]
-    Pull_trigger:
-        branches: [ master ]
 jobs:
   Job-One:
     name: First job
