@@ -1,39 +1,33 @@
 name: first workflow
+
 on: [push]
+
 jobs:
-  Job-One:
+  Job-One-ubuntu:
     name: First job
     runs-on: ubuntu-latest
     steps:
-    - name: Step One
-      uses: actions/checkout@v2
-    - name: Step Two
-      run: date "+%Y/%m/%d %H:%M:%S"
+    - name: Printing date and time
+      run: date
 
-  Job-Two:
+  Job-Two-windows:
     name: Second job
     runs-on: windows-latest
     steps:
-    - name: Step One
-      uses: actions/checkout@v2
-    - name: Step Two
-      run: echo %date:~-4%/%date:~3,2%/%date:~0,2% %time:~0,2%:%time:~3,2%:%time:~6,2%
+    - name: Printing date and time
+      run: date
 
-  Job-three:
+  Job-three-macos:
     name: third job
     runs-on: MacOS-latest
     steps:
-    - name: Step One
-      uses: actions/checkout@v2
-    - name: Step Two
-      run: date "+%Y/%m/%d %H:%M:%S"
+    - name: Printing date and time
+      run: date
 
   Job-four:
-    needs: [Job-One, Job-Two, Job-three]
+    needs: [Job-One-ubuntu, Job-Two-windows, Job-three-macos]
     name: fourth job
     runs-on: ubuntu-latest
     steps:
-    - name: Step One
-      uses: actions/checkout@v2
     - name: Step Two
-      run: "echo Thank you for using this workflow"
+      run: "Thank you for using this workflow"
